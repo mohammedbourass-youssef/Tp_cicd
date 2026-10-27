@@ -1,8 +1,10 @@
 ﻿name: CD Demo
 
 on:
-  push:
-    branches: [ main, master ]
+  workflow_run:
+    workflows: ["CI"]        # must match the `name:` field in CI.yaml
+    types: [completed]
+    branches: [main]         # optional: only deploy for main
   workflow_dispatch:
 
 jobs:
